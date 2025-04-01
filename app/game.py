@@ -1,5 +1,7 @@
 import pprint
 import random
+from game_state import GameState
+
 
 class Game:
     """Class to contain data and methods to run game"""
@@ -25,7 +27,7 @@ class Game:
 
 
     def __init__(self):
-        pass
+        self.state = GameState()
 
 
     def __computer_action(self):
