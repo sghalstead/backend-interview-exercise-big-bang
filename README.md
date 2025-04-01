@@ -49,3 +49,22 @@ When working on this project, we encourage you to treat the code as if it is int
 
 ## Submitting your code entry
 Please provide us with the url to a public github repository.
+
+# Repository Setup
+
+## Virtual Environment
+
+```
+python3.13 -m venv venv
+source venv/bin/activate
+```
+
+## Directory Structure
+
+```
+backend-interview-exercise-big-bang/    Root directory
+  app/                                  Application code
+  test/                                 Test suite
+  venv/                                 Virtual environment (git ignored)
+  README.md                             Project README
+```
