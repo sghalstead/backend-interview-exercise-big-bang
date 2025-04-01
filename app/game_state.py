@@ -1,6 +1,7 @@
 from pprint import pprint
 import json
 from pathlib import Path
+from templates import SCOREBOARD
 
 
 class dotdict(dict):
@@ -46,8 +47,11 @@ class GameState:
 
 
     def print_scoreboard(self):
-        print(">>> SCOREBOARD <<<")
-        pprint(self.state)
+        print(SCOREBOARD.format(
+            player_score=self.state.PLAYER_SCORE,
+            computer_score=self.state.COMP_SCORE,
+            ties=self.state.TIES
+        ))
         print()
 
 

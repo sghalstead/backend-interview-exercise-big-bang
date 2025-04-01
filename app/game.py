@@ -1,6 +1,7 @@
 import pprint
 import random
 from game_state import GameState
+import os
 
 
 class Game:
@@ -42,14 +43,15 @@ class Game:
     def __evaluate_round(self, user_action, comp_action):
         """Compare user and computer actions, determine who won the round"""
 
+        print()
         if user_action == comp_action:
-            print("Tie!")
+            print("⚔️ Tie! ⚔️")
             self.state.log_tie()
         elif comp_action in self.RULES[user_action]:
-            print("You won the round!")
+            print("🕺 You won the round! 🕺")
             self.state.log_player_win()
         elif user_action in self.RULES[comp_action]:
-            print("The computer won the round!")
+            print("🤖 The computer won the round! 🤖")
             self.state.log_comp_win()
         else:
             raise Exception("INVALID GAME STATE")
@@ -60,12 +62,10 @@ class Game:
 
         self.state.print_scoreboard()
 
-        user_action = input("\nChoose your action: ").lower()
+        user_action = input("Choose your action: ").lower()
 
         while user_action not in self.ACTIONS + self.COMMANDS:
             user_action = input("\nPlease choose a valid action or command: ").lower()
-
-        print(f"You chose: {user_action}")
         
         if user_action == "exit":
             return 0
@@ -86,6 +86,7 @@ class Game:
     def print_instructions(self):
         """Print game instructions to user"""
 
+        os.system('clear')
         print("🪨 📜 ✂️ 🦎 🖖  Welcome to RPSLS!  🪨 📜 ✂️ 🦎 🖖")
         print(self.INSTRUCTIONS)
         print(f"Valid game commands are: {self.COMMANDS}\n")
