@@ -39,3 +39,10 @@ class GameState:
 
     def log_tie(self):
         self.state.TIES += 1
+
+
+    def restart(self):
+        self.state.PLAYER_SCORE = 0
+        self.state.COMP_SCORE = 0
+        self.state.TIES = 0
+

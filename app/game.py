@@ -7,8 +7,10 @@ class Game:
     """Class to contain data and methods to run game"""
 
     INSTRUCTIONS = """
-    >> USER INSTRUCTIONS <<
-    At any time type "exit" to exit the game.
+    >> USER COMMANDS <<
+    At any time type you can use the following commands:
+      "exit" : exit the game (game state saved)
+      "restart" : clears the scoreboard and starts a new game
     """
 
     RULES = {
@@ -22,7 +24,8 @@ class Game:
     ACTIONS = list(RULES.keys())
 
     COMMANDS = [
-        'exit'
+        'exit',
+        'restart'
     ]
 
 
@@ -67,6 +70,10 @@ class Game:
         if user_action == "exit":
             return 0
         
+        if user_action == "restart":
+            self.restart_game()
+            return 1
+        
         comp_action = self.__computer_action()
         print(f"Computer chose: {comp_action}")
 
@@ -92,3 +99,13 @@ class Game:
         """Print summary of game results to user"""
 
         print("\nThanks for playing, bye!\n")
+
+
+    def restart_game(self):
+        """Clear game state and start a new game"""
+
+        print(">>> RESTARTING THE GAME <<<")
+        self.state.restart()
+        print()
+        self.print_instructions()
+
