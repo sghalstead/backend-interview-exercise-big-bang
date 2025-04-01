@@ -15,7 +15,10 @@ RULES = {
     'spock': ['scissors', 'rock']
 }
 
+
 def print_instructions():
+    """Print game instructions to user"""
+
     print("Welcome to RPSLS!")
     print(INSTRUCTIONS)
     print(f"Your possible actions are: {list(RULES.keys())}\n")
@@ -23,18 +26,35 @@ def print_instructions():
     pprint.pprint(RULES)
     print("\nLet the fun begin!\n")
 
+
+def print_game_summary():
+    """Print summary of game results to user"""
+
+    print("Thanks for playing, bye!")
+
+
+def play_round():
+    """Execute a single round of the game"""
+    
+    user_input = input("\nChoose your action: ").lower()
+    print(f"You chose: {user_input}\n")
+
+    if user_input == "exit":
+        return 0
+    
+    return 1
+
+
 def main():
     """Main application loop"""
 
     print_instructions()
 
-    while True:
-        user_input = input("\nChoose your action: ").lower()
-        print(f"You chose: {user_input}\n")
+    while play_round() == 1:
+        pass
 
-        if user_input == "exit":
-            print("Thanks for playing, bye!")
-            break
+    print_game_summary()
+
 
 
 if __name__ == "__main__":
