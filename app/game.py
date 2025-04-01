@@ -41,10 +41,13 @@ class Game:
 
         if user_action == comp_action:
             print("Tie!")
+            self.state.log_tie()
         elif comp_action in self.RULES[user_action]:
             print("You won the round!")
+            self.state.log_player_win()
         elif user_action in self.RULES[comp_action]:
             print("The computer won the round!")
+            self.state.log_comp_win()
         else:
             raise Exception("INVALID GAME STATE")
 
