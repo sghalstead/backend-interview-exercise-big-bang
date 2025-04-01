@@ -1,6 +1,7 @@
 # Application execution starts from this file
 
 import pprint
+import random
 
 INSTRUCTIONS = """
 >> USER INSTRUCTIONS <<
@@ -15,13 +16,19 @@ RULES = {
     'spock': ['scissors', 'rock']
 }
 
+ACTIONS = list(RULES.keys())
+
+COMMANDS = [
+    'exit'
+]
+
 
 def print_instructions():
     """Print game instructions to user"""
 
     print("Welcome to RPSLS!")
     print(INSTRUCTIONS)
-    print(f"Your possible actions are: {list(RULES.keys())}\n")
+    print(f"Your possible actions are: {ACTIONS}\n")
     print("Each action wins against two other actions as follows:")
     pprint.pprint(RULES)
     print("\nLet the fun begin!\n")
@@ -30,18 +37,32 @@ def print_instructions():
 def print_game_summary():
     """Print summary of game results to user"""
 
-    print("Thanks for playing, bye!")
+    print("\nThanks for playing, bye!\n")
+
+
+def computer_action():
+    """Selects an action for the computer player"""
+
+    return ACTIONS[random.randint(0, len(ACTIONS) - 1)]
 
 
 def play_round():
     """Execute a single round of the game"""
-    
-    user_input = input("\nChoose your action: ").lower()
-    print(f"You chose: {user_input}\n")
 
+    user_input = input("\nChoose your action: ").lower()
+
+    while user_input not in ACTIONS + COMMANDS:
+        user_input = input("\nPlease choose a valid action or 'exit': ").lower()
+
+    print(f"You chose: {user_input}")
+    
     if user_input == "exit":
         return 0
     
+    comp_action = computer_action()
+    print(f"Computer chose: {comp_action}")
+    
+    print()
     return 1
 
 
