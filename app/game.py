@@ -28,13 +28,13 @@ class Game:
         pass
 
 
-    def computer_action(self):
+    def __computer_action(self):
         """Selects an action for the computer player"""
 
         return self.ACTIONS[random.randint(0, len(self.ACTIONS) - 1)]
 
 
-    def evaluate_round(self, user_action, comp_action):
+    def __evaluate_round(self, user_action, comp_action):
         """Compare user and computer actions, determine who won the round"""
 
         if user_action == comp_action:
@@ -60,10 +60,10 @@ class Game:
         if user_action == "exit":
             return 0
         
-        comp_action = self.computer_action()
+        comp_action = self.__computer_action()
         print(f"Computer chose: {comp_action}")
 
-        self.evaluate_round(user_action, comp_action)
+        self.__evaluate_round(user_action, comp_action)
         
         print()
         return 1
