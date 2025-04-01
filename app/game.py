@@ -52,6 +52,8 @@ class Game:
     def play_round(self):
         """Execute a single round of the game"""
 
+        self.state.print_scoreboard()
+
         user_action = input("\nChoose your action: ").lower()
 
         while user_action not in self.ACTIONS + self.COMMANDS:
