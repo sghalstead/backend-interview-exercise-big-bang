@@ -52,13 +52,6 @@ Please provide us with the url to a public github repository.
 
 # Repository Setup
 
-## Virtual Environment
-
-```
-python3.13 -m venv venv
-source venv/bin/activate
-```
-
 ## Directory Structure
 
 ```
@@ -67,4 +60,17 @@ backend-interview-exercise-big-bang/    Root directory
   test/                                 Test suite
   venv/                                 Virtual environment (git ignored)
   README.md                             Project README
+```
+
+## Virtual Environment
+Before running the application, set up a virtual environment:
+```
+python3.13 -m venv venv
+source venv/bin/activate
+```
+
+## Running the application
+Execute the following command from the root directory:
+```
+python app/main.py
 ```
